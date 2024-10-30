@@ -93,7 +93,10 @@ button.onclick = function (event) {
     speeds = [0, 0, 0, 0, 0, 0]
     for (let index = 0; index < 6; index++) {
         cars[index].style.left = speeds[index] + "px"
-        cars[index].classList.add("turbo")
+
+        if(level>1){       
+             cars[index].classList.add("turbo")
+    }
     }
     //  стрелочная функция
     let timer = setInterval(() => {
@@ -140,7 +143,10 @@ button.onclick = function (event) {
                             }
 
                             if (money >= 2000) {
+                                if(level==1){
+
                                 bank.innerHTML = "you up to level 2"
+                                }
                                 setTimeout(() => {
                                     bank.innerHTML = "your bank: " + money
                                 }, 5000);
@@ -149,10 +155,47 @@ button.onclick = function (event) {
                                 for (let carindex = 0; carindex < carsMenu.length; carindex++) {
                                     carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
                                     cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
+                    
+
+                                }
+                            }
+
+                            if (money >= 4000) {
+                                if(level==2){
+
+                                    bank.innerHTML = "you up to level 3"
+                                    }
+                            
+                                setTimeout(() => {
+                                    bank.innerHTML = "your bank: " + money
+                                }, 5000);
+
+                                level = 3
+                                for (let carindex = 0; carindex < carsMenu.length; carindex++) {
+                                    carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
+                                    cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
 
 
                                 }
                             }
+                            if (money >= 32000) {
+                                if(level==3){
+
+                                    bank.innerHTML = "you up to level 4"
+                                    }
+                                setTimeout(() => {
+                                    bank.innerHTML = "your bank: " + money
+                                }, 5000);
+
+                                level = 4
+                                for (let carindex = 0; carindex < carsMenu.length; carindex++) {
+                                    carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
+                                    cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
+
+
+                                }
+                            }
+
 
                         }, 3000);
 
@@ -167,4 +210,5 @@ button.onclick = function (event) {
     }, 1000);
 
 }
-
+                            // 1. Обрезать картинки
+// 2. Сюрприз
