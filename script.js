@@ -21,7 +21,7 @@ let database = {
 
     },
     3: {
-        "landrover": "pngtree-land-rover-range-rover-png-image_13569885.png",
+        "landrover": "pngimg.com - land_rover_PNG33.png",
         "mazda": "cx-80-large-suv-soul-red-1080-x-438.webp",
         "chevrolet": "image (26).png",
         "toyota": "fortuner-thumb.png",
@@ -36,7 +36,18 @@ let database = {
         "toyota": "white-sport-car-isolated-on-transparent-background-3d-rendering-illustration-free-png.webp",
         "bmw": "chernaya_aad670c8bb.png",
         "lamborgini": "lamborghini-png-ydpsm36sg1gae2uf.png",
+
+    },
+    5: {
+        "porche": "image (27).png",
+        "renault": "image (28).png",
+        "chevrolet": "l1WUANPWFz3IEHOetgEhUpXBoPj1o2_L1Xvi33GiqczOr8byo3FeJkFJtgLpJmhg3-5rUeqTxP12rj8ZODn07g.webp",
+        "toyota": "toyota.webp",
+        "ferrari": "F1-Ferrari-Transparent-Background.png",
+        "mercedes": "mercedes.avif",
+
     }
+
 }
 let bank = document.getElementById("bank")
 let bet = 0
@@ -62,17 +73,17 @@ for (let carindex = 0; carindex < carsMenu.length; carindex++) {
     }
 }
 
-betInput.onchange = function (event) {
+betInput.oninput = function (event) {
     console.log(9);
 
     if (betInput.value > money) {
         betInput.value = money
     }
-    if(betInput.value==""){
-button.disabled=true
+    if (betInput.value == "") {
+        button.disabled = true
     }
-    else{
-        button.disabled=false 
+    else {
+        button.disabled = false
     }
 }
 
@@ -94,9 +105,9 @@ button.onclick = function (event) {
     for (let index = 0; index < 6; index++) {
         cars[index].style.left = speeds[index] + "px"
 
-        if(level>1){       
-             cars[index].classList.add("turbo")
-    }
+        if (level > 1) {
+            cars[index].classList.add("turbo")
+        }
     }
     //  стрелочная функция
     let timer = setInterval(() => {
@@ -140,37 +151,43 @@ button.onclick = function (event) {
 
                                 money = money - parseInt(bet)
                                 bank.innerHTML = "your bank: " + money
+                                if(money<=0){
+                                    bank.innerHTML="you lose!!!"
+                                }
                             }
 
                             if (money >= 2000) {
-                                if(level==1){
+                                if (level == 1) {
 
-                                bank.innerHTML = "you up to level 2"
+                                    bank.innerHTML = "you up to level 2"
+                                    level = 2
                                 }
                                 setTimeout(() => {
                                     bank.innerHTML = "your bank: " + money
                                 }, 5000);
 
-                                level = 2
+                               
                                 for (let carindex = 0; carindex < carsMenu.length; carindex++) {
                                     carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
                                     cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
-                    
+
 
                                 }
                             }
 
                             if (money >= 4000) {
-                                if(level==2){
+                                console.log(level);
+                                if (level == 2) {
 
                                     bank.innerHTML = "you up to level 3"
-                                    }
-                            
+                                    level = 3
+                                }
+
                                 setTimeout(() => {
                                     bank.innerHTML = "your bank: " + money
                                 }, 5000);
 
-                                level = 3
+                            
                                 for (let carindex = 0; carindex < carsMenu.length; carindex++) {
                                     carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
                                     cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
@@ -179,15 +196,16 @@ button.onclick = function (event) {
                                 }
                             }
                             if (money >= 32000) {
-                                if(level==3){
-
+                                if (level == 3) {
+                                 
                                     bank.innerHTML = "you up to level 4"
-                                    }
+                                    level = 4
+                                }
                                 setTimeout(() => {
                                     bank.innerHTML = "your bank: " + money
                                 }, 5000);
 
-                                level = 4
+                          
                                 for (let carindex = 0; carindex < carsMenu.length; carindex++) {
                                     carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
                                     cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
@@ -195,8 +213,25 @@ button.onclick = function (event) {
 
                                 }
                             }
+                            if (money >= 128000) {
+                                if (level == 4) {
+                                 
+                                    bank.innerHTML = "you up to level 5"
+                                    level = 5
+                                }
+                                setTimeout(() => {
+                                    bank.innerHTML = "your bank: " + money
+                                }, 5000);
+
+                          
+                                for (let carindex = 0; carindex < carsMenu.length; carindex++) {
+                                    carsMenu[carindex].src = database[level][Object.keys(database[level])[carindex]]
+                                    cars[carindex].src = database[level][Object.keys(database[level])[carindex]]
 
 
+                                }
+
+                            }
                         }, 3000);
 
                     }
