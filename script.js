@@ -126,9 +126,6 @@ button.onclick = function (event) {
                     cars[index].style.left = speeds[index] + "px"
 
                     speeds[index] = speeds[index] + Math.floor(Math.random() * 5)
-                    if (index == 1) {
-                        speeds[index] = speeds[index] + Math.floor(Math.random() * 5)
-                    }
                     if (window.innerWidth < speeds[index]) {
                         countdown.style.opacity = 1
                         countdown.innerHTML = "winner is: " + Object.keys(database[level])[index]
